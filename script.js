@@ -25,3 +25,17 @@ document.querySelector('body > a').addEventListener('click', function (event) {
       document.querySelector('article img').src = article.image;
     })
 })
+
+
+const ul = document.querySelector('ul');
+fetch('/list.json') //get article.json content
+  .then(response => { //when you get it
+    return response.json(); //see the content as json
+  })
+  .then(items => { // then you should do next
+    items.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      ul.append(li);
+    });
+  })
